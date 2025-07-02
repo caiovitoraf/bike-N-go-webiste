@@ -5,25 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bike N' Go - Página Inicial</title>
     <link rel="stylesheet" href="./css/style.css">
-    </head>
+</head>
 <body>
 
     <header class="header">
         <div class="header-logo">
             <a href="index.html">
-                <img src="./img/mainlogo.svg" alt="Logo Bike N' Go" class="logo-img">
+                <img src="./img/mainlogotrans2.svg" alt="Logo Bike N' Go" class="logo-img">
             </a>
         </div>
         <nav class="header-nav">
             <a href="vendas.html" class="nav-icon">
                 <img src="./img/bolsa.svg" alt="Ícone Vendas">
-                </a>
+                <span class="visually-hidden">Vendas</span>
+            </a>
             <a href="login.html" class="nav-icon">
                 <img src="./img/login.svg" alt="Ícone Login">
-                </a>
+                <span class="visually-hidden">Login</span>
+            </a>
             <a href="faq.html" class="nav-icon">
                 <img src="./img/question.svg" alt="Ícone FAQ">
-                </a>
+                <span class="visually-hidden">Perguntas Frequentes</span>
+            </a>
         </nav>
     </header>
 
@@ -33,33 +36,45 @@
                 <img src="./img/bikeicon.svg" alt="Placeholder Imagem Central" class="hero-image">
             </div>
             
-            <div class="hero-text-links">
-                <a href="#quem-somos" class="text-link">Quem somos?</a>
-                
-                <a href="#solucao-transito" class="text-link">O trânsito caótico e nossa solução</a>
+
+        <section id="quem-somos" class="content-section">
+            <div class="section-image">
+                <img src="./img/peopleworking.png" alt="Equipe da Bike N' Go trabalhando em bicicletas.">
+            </div>
+            <div class="section-text">
+                <h2>Quem Somos?</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                </p>
             </div>
         </section>
 
-        <section id="quem-somos" class="content-section">
-            <h2>Quem Somos?</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </section>
-
         <section id="solucao-transito" class="content-section">
-            <h2>O trânsito caótico e nossa solução</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. Nulla facilisi. 
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                Fusce euismod sem nec urna pharetra, a volutpat orci varius. Sed in mi vel justo efficitur interdum. 
-                Vivamus non libero id justo interdum laoreet. Ut feugiat ex sit amet sapien rhoncus, vel bibendum purus lacinia.
-            </p>
+            <div class="section-image">
+                <img src="./img/manbiking.png" alt="Ciclista pedalando por uma cidade com trânsito ao fundo.">
+            </div>
+            <div class="section-text">
+                <h2>O trânsito caótico e nossa solução</h2>
+                <p>
+                    Aliquam erat volutpat. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+                    Fusce euismod sem nec urna pharetra, a volutpat orci varius.
+                </p>
+            </div>
         </section>
     </main>
 
-    </body>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Bike N' Go. Todos os direitos reservados.</p>
+            <div class="footer-social-links">
+                <a href="#" aria-label="Facebook"><img src="./img/facebook-icon.svg" alt="Facebook"></a>
+                <a href="#" aria-label="Instagram"><img src="./img/instagram-icon.svg" alt="Instagram"></a>
+                <a href="#" aria-label="Twitter"><img src="./img/twitter-icon.svg" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
 </html>

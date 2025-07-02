@@ -1,49 +1,84 @@
-/* Reset Básico */
+/* --- Variáveis Globais (Custom Properties) --- */
+:root {
+    --primary-color: #eb4b98;
+    --primary-color-hover: #fc9dcb;
+    --text-light: #f0f0f0;
+    --text-paragraph: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-border-hover: rgba(255, 255, 255, 0.8);
+    --glass-blur: 8px;
+    --glass-radius: 16px;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-shadow-hover: 0 8px 40px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.5);
+    --gradient-top: #00212A;
+    --gradient-bottom: #02394A;
+}
+
+/* --- Reset Básico --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --- Classe de Acessibilidade --- */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #f0f0f0; /* Texto claro para contrastar com o fundo escuro */
+    color: var(--text-light);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    
-    /* Propriedade para o Degradê */
-    background: linear-gradient(to bottom, #00212A, #02394A);
-    background-attachment: fixed; /* Garante que o gradiente permaneça fixo na rolagem */
+    background: linear-gradient(to bottom, var(--gradient-top), var(--gradient-bottom));
+    background-attachment: fixed;
+    padding-top: 80px;
 }
 
 /* --- Estilos do Cabeçalho (Header) --- */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000;
     padding: 15px 40px;
-    /* Efeito Liquid Glass no Header */
-    background-color: rgba(255, 255, 255, 0.15); /* Fundo branco levemente transparente */
-    backdrop-filter: blur(5px); /* Efeito de desfoque */
-    -webkit-backdrop-filter: blur(5px); /* Compatibilidade Safari */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borda mais transparente */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Sombra suave */
-    
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição para efeito reativo */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .header-logo .logo-img {
     height: 50px;
     width: auto;
     display: block;
-    /* Opcional: Se o logo for escuro e precisar de inversão para fundo escuro */
-    /* filter: brightness(0) invert(1); */
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Ajuste a cor dos ícones de navegação para o tema escuro */
+.header-logo a:hover .logo-img {
+    transform: scale(1.05);
+    filter: 
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))
+        drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+}
+
 .header-nav {
     display: flex;
     gap: 20px;
@@ -53,18 +88,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05); /* Fundo levemente transparente para o círculo do ícone */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Borda mais clara */
-    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transições para os efeitos */
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
-    position: relative; /* Necessário para o efeito de borda luminosa */
-    overflow: hidden; /* Garante que o pseudo-elemento não transborde */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Efeito luminoso para ícones */
 .nav-icon::before {
     content: '';
     position: absolute;
@@ -72,33 +106,32 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%); /* Luz suave */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
     transform: rotate(45deg);
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
     opacity: 0;
 }
 
 .nav-icon:hover::before {
-    transform: rotate(0deg); /* Faz a luz girar e aparecer */
+    transform: rotate(0deg);
     opacity: 1;
 }
-
 
 .nav-icon img {
     width: 24px;
     height: 24px;
     display: block;
-    /* Se os ícones SVG forem escuros e precisarem de inversão */
-    filter: brightness(0) invert(1); /* Tenta transformar o ícone em branco/claro */
-    z-index: 1; /* Garante que o ícone fique acima do efeito luminoso */
-    position: relative; /* Garante que z-index funcione */
+    filter: brightness(0) invert(1);
+    z-index: 1;
+    position: relative;
 }
 
-.nav-icon:hover {
+.nav-icon:hover, .nav-icon:focus {
     background-color: rgba(255, 255, 255, 0.15);
     transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.7); /* Borda mais visível no hover */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Efeito luminoso suave no hover */
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    outline: none;
 }
 
 /* --- Estilos do Conteúdo Principal (Main) --- */
@@ -115,209 +148,207 @@ body {
 
 .hero-section {
     width: 100%;
-    /* Efeito Liquid Glass */
-    background-color: rgba(255, 255, 255, 0.1); /* Fundo branco com 10% de opacidade */
-    border-radius: 16px; /* Bordas mais suaves */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para profundidade */
-    backdrop-filter: blur(8px); /* Efeito de desfoque */
-    -webkit-backdrop-filter: blur(8px); /* Compatibilidade Safari */
-    border: 1px solid rgba(255, 255, 255, 0.18); /* Borda sutil */
-    
-    padding: 40px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Aumentei o espaçamento para acomodar imagem maior e reativa */
-    margin-bottom: 40px;
-    transition: all 0.3s ease-in-out; /* Transição para o efeito reativo da borda */
-}
-
-/* Efeito luminoso na borda ao passar o mouse */
-.hero-section:hover {
-    border: 1px solid rgba(255, 255, 255, 0.8); /* Borda mais visível/brilhante */
-    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.5); /* Sombra com brilho extra */
-    transform: translateY(-5px); /* Pequeno levantamento */
+    gap: 40px;
+    margin-bottom: 60px;
 }
 
 .image-wrapper {
-    /* Borda inicial de 0px conforme solicitado */
-    border: 0px solid rgba(255, 255, 255, 0.3); /* Borda do placeholder de imagem */
-    padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição para os efeitos de hover */
-
-    /* Dimensões Reativas para o wrapper da imagem */
-    width: 90%; /* Ocupa 90% da largura da hero-section */
-    max-width: 600px; /* Largura máxima para evitar que fique gigante em telas muito largas */
-    min-width: 280px; /* Largura mínima para que não fique minúsculo em telas muito pequenas */
-}
-
+    width: 100%;
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
+} 
 
 .hero-image {
-    max-width: 100%; /* Garante que a imagem não transborde seu contêiner (.image-wrapper) */
-    width: 100%; /* Faz a imagem preencher a largura do .image-wrapper */
-    height: auto; /* Essencial para manter a proporção da imagem */
-    
-    /* Opcional: Definir uma altura mínima para o placeholder */
-    min-height: 200px; /* Garante que o placeholder não fique achatado em telas pequenas */
-
-    object-fit: cover; /* Garante que a imagem cubra o espaço definido, cortando se necessário */
+    width: 60%;
+    height: auto;
     display: block;
     border-radius: 4px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+
 }
 
-.hero-text-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.text-link {
-    font-size: 1.8em;
-    color: #eb4b98; /* Cor rosa/magenta para links, para melhor contraste no fundo escuro */
-    text-decoration: none;
-    /* Remover border-bottom inicial se não quiser o sublinhado fixo */
-    transition: border-bottom 0.3s ease, color 0.3s ease;
-}
-
-.text-link:hover {
-    color: #fc9dcb; /* Cor mais clara ao passar o mouse */
-    border-bottom: 2px solid #fc9dcb; /* Adiciona sublinhado ao passar o mouse */
-}
-
-/* --- Estilos das Seções de Conteúdo (Âncoras) --- */
+/* --- Seções de Conteúdo com Wrapper --- */
 .content-section {
     width: 100%;
-    /* Efeito Liquid Glass */
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    
-    padding: 30px;
-    margin-bottom: 30px;
-    transition: all 0.3s ease-in-out; /* Transição para o efeito reativo da borda */
+    margin-bottom: 40px;
+    background-color: var(--glass-bg);
+    border-radius: 9999px; 
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    padding: 40px;
+    display: flex;
+    /* MUDANÇA: Voltando para 'center' para que a imagem não se estique */
+    align-items: center; 
+    gap: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.2s ease-in-out, opacity 0.6s ease-out, transform 0.3s ease-out;
+    /* MUDANÇA: Removido o overflow: hidden para que a imagem não seja cortada de forma indesejada */
 }
 
-/* Efeito luminoso na borda ao passar o mouse */
 .content-section:hover {
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.5);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
     transform: translateY(-5px);
 }
 
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-section.visible:hover {
+    transform: translateY(-5px);
+}
+
+.content-section:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+/* MUDANÇA: Definindo um tamanho fixo para o container da imagem criar um círculo */
+.section-image {
+    flex: 0 0 220px; /* Não cresce, não encolhe, base de 220px de largura */
+    width: 220px;
+    height: 220px;
+}
+
+.section-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Garante que a imagem preencha o círculo sem distorcer */
+    object-fit: cover; 
+    /* MUDANÇA: Faz a imagem ser um círculo perfeito */
+    border-radius: 50%; 
+}
+
+.section-text {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .content-section h2 {
-    font-size: 2em;
-    color: #eb4b98; /* Um verde mais vibrante para títulos, contrastando melhor */
+    color: var(--primary-color);
     margin-bottom: 15px;
-    text-align: center;
+    text-align: left;
+    font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem);
 }
 
 .content-section p {
-    font-size: 1.1em;
     line-height: 1.8;
     text-align: justify;
-    color: #e0e0e0; /* Texto mais claro para os parágrafos */
+    color: var(--text-paragraph);
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
 }
 
-/* Media Queries para Responsividade */
+/* --- Estilos do Rodapé (Footer) --- */
+.footer {
+    width: 100%;
+    padding: 20px 40px;
+    margin-top: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-links a img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.footer-social-links a:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Media Queries para Responsividade --- */
 @media (max-width: 768px) {
-    .header {
+    body {
+        padding-top: 125px;
+    }
+    .header { flex-direction: column; padding: 10px 15px; }
+    .header-logo .logo-img { height: 40px; }
+    .header-nav { margin-top: 10px; gap: 10px; }
+    .nav-icon { width: 35px; height: 35px; }
+    .nav-icon img { width: 20px; height: 20px; }
+    .main-content { margin: 20px auto; padding: 0 15px; }
+    .hero-section { gap: 20px; }
+    .image-wrapper { width: 95%; min-width: unset; }
+    .hero-image { min-height: 150px; }
+
+    .content-section, .content-section:nth-of-type(even) {
         flex-direction: column;
-        padding: 10px 15px;
-    }
-
-    .header-logo .logo-img {
-        height: 40px;
-    }
-
-    .header-nav {
-        margin-top: 10px;
-        gap: 10px;
-    }
-
-    .nav-icon {
-        width: 35px;
-        height: 35px;
-    }
-
-    .nav-icon img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .main-content {
-        margin: 20px auto;
-        padding: 0 15px;
-    }
-
-    .hero-section {
-        padding: 30px;
         gap: 20px;
-        border-radius: 12px; /* Ajuste para telas menores */
+        padding: 30px;
+        border-radius: 40px;
     }
 
-    .image-wrapper {
-        padding: 8px;
-        width: 95%; /* Pode ocupar um pouco mais de espaço em telas menores */
-        min-width: unset; /* Remove o min-width para deixar mais flexível */
+    /* MUDANÇA: Adaptando o container da imagem para o layout de coluna */
+    .section-image {
+        flex-basis: auto; /* Reseta a base flex */
+        width: 50%; /* Faz a imagem ocupar metade da largura do container */
+        height: auto;
+        aspect-ratio: 1 / 1; /* Mantém o formato quadrado para o círculo funcionar */
+        margin: 0 auto; /* Centraliza a imagem */
     }
 
-    .hero-image {
-        min-height: 150px; /* Altura mínima menor para telas médias */
-        /* width e height fixas removidas, pois já são reativas */
-    }
-
-    .text-link {
-        font-size: 1.5em;
-    }
-
-    .content-section {
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 12px; /* Ajuste para telas menores */
+    /* MUDANÇA: Opcional, a imagem continua circular, mas poderia ser alterada aqui se desejado */
+    .section-image img {
+        border-radius: 50%; /* Mantém o círculo */
     }
 
     .content-section h2 {
-        font-size: 1.8em;
+        text-align: center;
     }
-
-    .content-section p {
-        font-size: 1em;
-    }
+    
+    .footer-content { flex-direction: column; justify-content: center; text-align: center; }
 }
 
 @media (max-width: 480px) {
-    .header {
-        padding: 10px;
+    body {
+        padding-top: 115px;
     }
-
-    .header-logo .logo-img {
-        height: 35px;
-    }
-
-    .hero-image {
-        min-height: 120px; /* Altura mínima menor para telas muito pequenas */
-        /* width e height fixas removidas, pois já são reativas */
-    }
-
-    .hero-section {
-        padding: 20px;
-    }
-
-    .text-link {
-        font-size: 1.3em;
-    }
+    .header { padding: 10px; }
+    .header-logo .logo-img { height: 35px; }
+    .hero-image { min-height: 120px; }
 
     .content-section {
-        padding: 15px;
+        padding: 20px;
+        border-radius: 30px;
     }
 
-    .content-section h2 {
-        font-size: 1.5em;
+    /* MUDANÇA: Ajuste para telas bem pequenas */
+    .section-image {
+        width: 60%;
+    }
+
+    .section-image img {
+        /* MUDANÇA: Acompanha o raio do container pai */
+        border-radius: 24px;
     }
 }
