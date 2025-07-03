@@ -581,3 +581,268 @@ body {
 .faq-item.active .faq-icon {
     transform: rotate(180deg);
 }
+
+/* --- Estilos da Página de Planos (Layout Unificado) --- */
+
+.subtitle {
+    text-align: center;
+    color: var(--text-paragraph);
+    max-width: 600px;
+    margin: -2rem auto 4rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.plans-container.unified {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Faz todos os cards terem a mesma altura */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.plan-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 30px 25px;
+    width: 100%;
+    /* Largura calculada para 4 itens com gap */
+    flex-basis: calc(25% - 1.2rem);
+    flex-grow: 1;
+    min-width: 280px; /* Largura mínima antes de quebrar a linha */
+    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: fadeIn 0.9s ease-in-out;
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color-hover);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.plan-card.popular {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.05);
+}
+
+.plan-card.popular:hover {
+    transform: scale(1.08) translateY(-8px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.plan-card h2 {
+    font-size: 1.6rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.plan-tagline {
+    color: var(--text-paragraph);
+    margin-bottom: 1.5rem;
+    min-height: 40px;
+}
+
+.plan-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.plan-price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-paragraph);
+    margin-left: 5px;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    text-align: left;
+    color: var(--text-paragraph);
+    flex-grow: 1; 
+}
+
+.plan-features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.check-icon {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* --- Media Queries para Layout Unificado --- */
+
+/* Telas de Tablet - 2 colunas */
+@media (max-width: 1200px) {
+    .plans-container.unified {
+        flex-wrap: wrap;
+    }
+    .plan-card {
+        flex-basis: calc(50% - 1rem);
+        margin-bottom: 2rem;
+    }
+}
+
+/* Telas de Celular - 1 coluna */
+@media (max-width: 768px) {
+    .plan-card {
+        flex-basis: 100%;
+        max-width: 380px; /* Limita a largura em telas muito largas no mobile */
+        margin-bottom: 2rem;
+    }
+    .plan-card.popular {
+        transform: scale(1);
+        order: -1; /* Opcional: move o plano popular para o topo no mobile */
+    }
+    .plan-card.popular:hover {
+        transform: translateY(-8px);
+    }
+}
+
+/* --- Estilos Adicionais para Página de Planos (Categorias) --- */
+
+.category-wrapper {
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.category-wrapper:first-of-type {
+    margin-top: 0;
+}
+
+.section-heading {
+    text-align: center;
+    color: var(--text-light);
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Linha decorativa abaixo do título da seção */
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.single-ride-container {
+    display: flex;
+    justify-content: center; /* Para centralizar os cards em telas maiores */
+    gap: 2rem;
+    /* Remova o flex-wrap para manter a horizontal */
+}
+
+.single-ride-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 25px;
+    width: calc(50% - 1rem); /* Define a largura para dois itens por linha */
+    max-width: none; /* Remove a largura máxima */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.single-ride-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color-hover);
+}
+
+.single-ride-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+.single-ride-card .ride-type {
+    color: var(--text-paragraph);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.single-ride-card .single-ride-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.single-ride-card .price-condition {
+    color: var(--text-paragraph);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Media query para telas menores, onde talvez seja melhor empilhar */
+@media (max-width: 600px) {
+    .single-ride-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .single-ride-card {
+        width: 90%;
+    }
+}
+
+/* Ajustes responsivos para a página de planos */
+@media (max-width: 768px) {
+    .plan-card.popular {
+        transform: scale(1); /* Remove o destaque de tamanho em telas menores para economizar espaço */
+        margin-top: 2rem; /* Adiciona espaço para o badge não sobrepor o título */
+    }
+
+    .plan-card.popular:hover {
+        transform: translateY(-8px);
+    }
+    
+    .plans-container {
+        gap: 1.5rem;
+    }
+}
