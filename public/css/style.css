@@ -15,6 +15,20 @@
     --gradient-bottom: #02394A;
 }
 
+@font-face {
+  font-family: 'FonteTexto';
+  src: url('../fonts/SFPRODISPLAYREGULAR.OTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FonteTitulo';
+  src: url('../fonts/SFPRODISPLAYBOLD.OTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* --- Reset Básico e Padrões --- */
 * {
     margin: 0;
@@ -27,7 +41,7 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'FonteTexto', sans-serif;
     line-height: 1.6;
     color: var(--text-light);
     display: flex;
@@ -37,6 +51,10 @@ body {
     background-attachment: fixed;
     padding-top: 80px; /* Espaço para o header fixo */
     transition: padding-top 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'FonteTitulo', sans-serif;
 }
 
 /* --- Estilos do Cabeçalho (Header) --- */
