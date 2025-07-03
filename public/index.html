@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bike N' Go - Página Inicial</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+<header class="header">
+    <div class="header-logo">
+        <a href="index.html">
+            <img src="./img/mainlogotrans2.svg" alt="Logo Bike N' Go" class="logo-img" />
+        </a>
+    </div>
+    <nav class="header-nav">
+        <a href="vendas.html" class="nav-icon"><img src="./img/bolsa.svg" alt="Ícone Vendas" /></a>
+        <a href="login.html" class="nav-icon"><img src="./img/login.svg" alt="Ícone Login" /></a>
+        <a href="faq.html" class="nav-icon"><img src="./img/question.svg" alt="Ícone FAQ" /></a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <section class="hero-section">
+        <div class="image-wrapper">
+            <img src="./img/bikeicon.svg" alt="Logo central Bike N' Go" class="hero-image" />
+        </div>
+    </section>
+
+    <section id="quem-somos" class="content-section reveal">
+        <div class="section-text">
+            <h2>Quem Somos</h2>
+            <p>
+                A <strong>Bike N' Go</strong> nasceu com o objetivo de transformar o trânsito do Rio de Janeiro por meio do ciclismo urbano acessível.
+                Nós acreditamos que a bicicleta é uma aliada poderosa da sustentabilidade e da mobilidade inteligente. Nossa empresa oferece
+                planos mensais de aluguel de bicicletas convencionais e elétricas, com uma ampla rede de estacionamentos e postos automatizados.
+            </p>
+            <p>
+                Trabalhamos em parceria com o poder público para desenvolver infraestrutura cicloviária, promovendo uma cultura de mobilidade limpa
+                e eficiente. A empresa não visa apenas lucro: estamos engajados em transformar vidas por meio de um novo jeito de se locomover.
+            </p>
+        </div>
+        <div class="section-float-img">
+            <img src="./img/peopleworking.png" alt="Equipe Bike N' Go" />
+        </div>
+    </section>
+
+    <section id="problema-transito" class="content-section reveal">
+        <div class="section-text">
+            <h2>O Trânsito no Rio</h2>
+            <p>
+                O carioca passa em média 190 horas por ano preso em engarrafamentos. Esse número coloca a cidade entre as mais congestionadas do mundo.
+                Além da perda de tempo, temos impactos sociais, econômicos e ambientais devastadores.
+            </p>
+            <p>
+                A dependência dos carros, a infraestrutura precária de transporte público e a falta de incentivo à mobilidade ativa criam um ciclo vicioso.
+                Nós queremos quebrar esse ciclo.
+            </p>
+        </div>
+        <div class="section-float-img">
+            <img src="./img/trafficRJ.jpg" alt="Trânsito caótico do Rio" />
+        </div>
+    </section>
+
+    <section id="solucao-bng" class="content-section reveal">
+        <div class="section-text">
+            <h2>Nossa Proposta</h2>
+            <p>
+                Nosso modelo é inspirado em cidades como Amsterdã, onde a bicicleta domina o cenário urbano. Investimos em tecnologia e
+                logística para que qualquer pessoa possa alugar uma bike por um preço justo e devolver onde quiser, com segurança.
+            </p>
+            <p>
+                Usuários têm acesso a estacionamentos gratuitos (quando usando bikes da BNG) e pagam apenas R$ 1 com bicicleta própria. É uma
+                proposta de inclusão social e de melhoria urbana — prática, ecológica e inteligente.
+            </p>
+        </div>
+        <div class="section-float-img">
+            <img src="./img/manbiking.png" alt="Homem pedalando" />
+        </div>
+    </section>
+
+    <section id="impacto-social" class="content-section reveal">
+        <div class="section-text">
+            <h2>Nosso Impacto</h2>
+            <p>
+                Em 2024, inauguramos 22 km de ciclovias em parceria com a prefeitura. Nosso plano é alcançar 80 km até 2026, principalmente em áreas de baixa renda.
+                Inspirados por cidades como Bogotá, queremos cidades onde pedestres e ciclistas tenham prioridade no desenho urbano.
+            </p>
+            <p>
+                A mobilidade ativa reduz doenças, promove qualidade de vida e democratiza o espaço urbano. É nisso que acreditamos.
+            </p>
+        </div>
+        <div class="section-float-img">
+            <img src="./img/pinkbikelane.png" alt="Ciclovia construída" />
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2025 Bike N' Go. Todos os direitos reservados.</p>
+        <div class="footer-social-links">
+            <a href="#"><img src="./img/facebook-icon.svg" alt="Facebook" /></a>
+            <a href="#"><img src="./img/instagram-icon.svg" alt="Instagram" /></a>
+            <a href="#"><img src="./img/twitter-icon.svg" alt="Twitter" /></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(rev => observer.observe(rev));
+</script>
+</body>
+</html>

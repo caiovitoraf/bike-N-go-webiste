@@ -1,0 +1,866 @@
+/* --- Variáveis Globais (Custom Properties) --- */
+:root {
+    --primary-color: #eb4b98;
+    --primary-color-hover: #fc9dcb;
+    --text-light: #f0f0f0;
+    --text-paragraph: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-border-hover: rgba(255, 255, 255, 0.8);
+    --glass-blur: 8px;
+    --glass-radius: 16px;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-shadow-hover: 0 8px 40px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.5);
+    --gradient-top: #00212A;
+    --gradient-bottom: #02394A;
+}
+
+@font-face {
+  font-family: 'FonteTexto';
+  src: url('../fonts/SFPRODISPLAYREGULAR.OTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FonteTitulo';
+  src: url('../fonts/SFPRODISPLAYBOLD.OTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* --- Reset Básico e Padrões --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'FonteTexto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--gradient-top), var(--gradient-bottom));
+    background-attachment: fixed;
+    padding-top: 80px; /* Espaço para o header fixo */
+    transition: padding-top 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'FonteTitulo', sans-serif;
+}
+
+/* --- Estilos do Cabeçalho (Header) --- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 40px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.header-logo .logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+    transition: height 0.3s ease, filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.header-logo a:hover .logo-img {
+    transform: scale(1.05);
+    filter: 
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))
+        drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+    transition: gap 0.3s ease;
+}
+
+.nav-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-icon img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    filter: brightness(0) invert(1);
+    z-index: 1;
+    position: relative;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.nav-icon:hover, .nav-icon:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    outline: none;
+}
+
+/* --- Estilos do Conteúdo Principal (Main) --- */
+.main-content {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1100px; /* Aumentado para melhor alinhamento com as seções */
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Ajustado para ser responsivo */
+    height: 100%; /* Ajustado para ser responsivo */
+    max-width: 1000px;
+    max-height: 1000px;
+    background: radial-gradient(circle, rgba(235, 75, 152, 0.5) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(120px);
+}
+
+.hero-image {
+    width: 60%;
+    max-width: 400px; /* Limite máximo para a logo */
+    height: auto;
+    display: block;
+    margin: 0 auto 60px;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Seções de Conteúdo --- */
+.content-section {
+    width: 100%;
+    background-color: var(--glass-bg);
+    border-radius: 20px;
+    padding: 60px 40px;
+    margin: 80px auto; /* Reduzido para melhor espaçamento em telas menores */
+    position: relative;
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    align-items: center; /* Centralizado verticalmente */
+    gap: 60px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.content-section.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-text {
+    flex: 1;
+}
+
+.section-text h2 {
+    color: var(--primary-color);
+    /* Tipografia Fluida: min, ideal, max */
+    font-size: clamp(1.8rem, 4vw, 2.2rem); 
+    margin-bottom: 1rem;
+}
+
+.section-text p {
+    color: var(--text-paragraph);
+    /* Tipografia Fluida: min, ideal, max */
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.8; /* Ajustado para melhor leitura com fontes fluidas */
+    margin-bottom: 1rem;
+}
+
+.section-float-img {
+    flex-shrink: 0;
+    margin-right: -100px; /* Efeito "flutuante" */
+    margin-top: 20px;
+}
+
+.section-float-img img {
+    width: 250px; /* Aumentado um pouco para mais impacto */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* --- Estilos do Rodapé (Footer) --- */
+.footer {
+    width: 100%;
+    padding: 20px 40px;
+    margin-top: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-links a img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.footer-social-links a:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Tablet (e celulares em modo paisagem) */
+@media (max-width: 900px) {
+    .content-section {
+        flex-direction: column; /* Empilha os itens */
+        align-items: center;
+        padding: 40px 25px;
+        margin: 60px 0;
+        gap: 30px;
+    }
+
+    .section-float-img {
+        order: -1; /* Coloca a imagem antes do texto */
+        margin: 0 0 20px 0; /* Remove o efeito flutuante */
+        width: 100%;
+        text-align: center;
+    }
+
+    .section-float-img img {
+        width: 60%; /* Imagem ocupa uma porcentagem da largura */
+        max-width: 280px; /* Limite para não ficar gigante */
+        height: auto;
+        border-radius: 20px;
+    }
+
+    .section-text {
+        width: 100%;
+    }
+
+    .section-text h2, .section-text p {
+        text-align: center;
+    }
+
+    .section-text p {
+        text-align: justify; /* Melhora a leitura de blocos de texto */
+        padding: 0 10px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    body {
+        padding-top: 70px; /* Altura do header reduzida */
+    }
+
+    .header {
+        padding: 10px 20px;
+    }
+
+    .header-logo .logo-img {
+        height: 40px;
+    }
+
+    .header-nav {
+        gap: 10px;
+    }
+
+    .nav-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-icon img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .hero-image {
+        width: 70%;
+    }
+
+    .content-section {
+        padding: 30px 15px;
+        margin: 40px 0;
+    }
+    
+    .footer-content {
+        flex-direction: column; /* Empilha o conteúdo do rodapé */
+        gap: 20px;
+    }
+}
+
+/* --- Estilos da Página de Login --- */
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 2rem auto;
+    padding: 40px;
+    background-color: var(--glass-bg);
+    border-radius: var(--glass-radius);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.login-container h2 {
+    color: var(--text-light);
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.login-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-paragraph);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(235, 75, 152, 0.5);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-options a {
+    color: var(--primary-color-hover);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.form-options a:hover {
+    text-decoration: underline;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Esconde o checkbox padrão */
+.remember-me input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+/* Estiliza a marca de "check" */
+.remember-me input[type="checkbox"]:checked::before {
+    content: '✔';
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(235, 75, 152, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-color-hover);
+    box-shadow: 0 6px 20px rgba(235, 75, 152, 0.5);
+}
+
+.signup-link {
+    margin-top: 2rem;
+    color: var(--text-paragraph);
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: var(--primary-color-hover);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Estilos da Página de FAQ --- */
+
+.main-title {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.faq-item {
+    background-color: var(--glass-bg);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden; /* Essencial para o efeito de acordeão */
+    transition: margin-bottom 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    text-align: left;
+    color: var(--text-light);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: bold;
+}
+
+.faq-icon {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease-out;
+    font-weight: 300;
+}
+
+.faq-answer {
+    max-height: 0; /* Começa fechado */
+    padding: 0 20px;
+    color: var(--text-paragraph);
+    line-height: 1.7;
+    transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+}
+
+.faq-answer p {
+    padding-bottom: 20px; /* Garante um espaçamento interno quando aberto */
+}
+
+/* Estilos para quando o item está ativo (aberto) */
+.faq-item.active .faq-question {
+    color: var(--primary-color-hover);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* --- Estilos da Página de Planos (Layout Unificado) --- */
+
+.subtitle {
+    text-align: center;
+    color: var(--text-paragraph);
+    max-width: 600px;
+    margin: -2rem auto 4rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.plans-container.unified {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Faz todos os cards terem a mesma altura */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.plan-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 30px 25px;
+    width: 100%;
+    /* Largura calculada para 4 itens com gap */
+    flex-basis: calc(25% - 1.2rem);
+    flex-grow: 1;
+    min-width: 280px; /* Largura mínima antes de quebrar a linha */
+    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: fadeIn 0.9s ease-in-out;
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color-hover);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.plan-card.popular {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.05);
+}
+
+.plan-card.popular:hover {
+    transform: scale(1.08) translateY(-8px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.plan-card h2 {
+    font-size: 1.6rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.plan-tagline {
+    color: var(--text-paragraph);
+    margin-bottom: 1.5rem;
+    min-height: 40px;
+}
+
+.plan-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.plan-price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-paragraph);
+    margin-left: 5px;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    text-align: left;
+    color: var(--text-paragraph);
+    flex-grow: 1; 
+}
+
+.plan-features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.check-icon {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* --- Media Queries para Layout Unificado --- */
+
+/* Telas de Tablet - 2 colunas */
+@media (max-width: 1200px) {
+    .plans-container.unified {
+        flex-wrap: wrap;
+    }
+    .plan-card {
+        flex-basis: calc(50% - 1rem);
+        margin-bottom: 2rem;
+    }
+}
+
+/* Telas de Celular - 1 coluna */
+@media (max-width: 768px) {
+    .plan-card {
+        flex-basis: 100%;
+        max-width: 380px; /* Limita a largura em telas muito largas no mobile */
+        margin-bottom: 2rem;
+    }
+    .plan-card.popular {
+        transform: scale(1);
+        order: -1; /* Opcional: move o plano popular para o topo no mobile */
+    }
+    .plan-card.popular:hover {
+        transform: translateY(-8px);
+    }
+}
+
+/* --- Estilos Adicionais para Página de Planos (Categorias) --- */
+
+.category-wrapper {
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.category-wrapper:first-of-type {
+    margin-top: 0;
+}
+
+.section-heading {
+    text-align: center;
+    color: var(--text-light);
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Linha decorativa abaixo do título da seção */
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.single-ride-container {
+    display: flex;
+    justify-content: center; /* Para centralizar os cards em telas maiores */
+    gap: 2rem;
+    /* Remova o flex-wrap para manter a horizontal */
+}
+
+.single-ride-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 25px;
+    width: calc(50% - 1rem); /* Define a largura para dois itens por linha */
+    max-width: none; /* Remove a largura máxima */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.single-ride-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color-hover);
+}
+
+.single-ride-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+.single-ride-card .ride-type {
+    color: var(--text-paragraph);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.single-ride-card .single-ride-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.single-ride-card .price-condition {
+    color: var(--text-paragraph);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Media query para telas menores, onde talvez seja melhor empilhar */
+@media (max-width: 600px) {
+    .single-ride-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .single-ride-card {
+        width: 90%;
+    }
+}
+
+/* Ajustes responsivos para a página de planos */
+@media (max-width: 768px) {
+    .plan-card.popular {
+        transform: scale(1); /* Remove o destaque de tamanho em telas menores para economizar espaço */
+        margin-top: 2rem; /* Adiciona espaço para o badge não sobrepor o título */
+    }
+
+    .plan-card.popular:hover {
+        transform: translateY(-8px);
+    }
+    
+    .plans-container {
+        gap: 1.5rem;
+    }
+}
