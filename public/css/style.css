@@ -157,11 +157,26 @@ body {
 }
 
 .image-wrapper {
+    position: relative;
     width: 100%;
     max-width: 1000px;
     display: block;
     margin: 0 auto;
-} 
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, rgba(235, 75, 152, 0.5) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(120px);
+}
 
 .hero-image {
     width: 60%;
@@ -170,7 +185,8 @@ body {
     border-radius: 4px;
     margin: 0 auto;
     margin-bottom: 60px;
-
+    position: relative;
+    z-index: 1;
 }
 
 /* --- Seções de Conteúdo com Wrapper --- */
@@ -178,27 +194,27 @@ body {
     width: 100%;
     margin-bottom: 40px;
     background-color: var(--glass-bg);
-    border-radius: 9999px; 
+    border-radius: 20px; /* Novo valor: menos arredondado */
     box-shadow: var(--glass-shadow);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
-    padding: 40px;
+    padding: 50px;
     display: flex;
-    /* MUDANÇA: Voltando para 'center' para que a imagem não se estique */
-    align-items: center; 
+    align-items: center;
     gap: 40px;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.2s ease-in-out, opacity 0.6s ease-out, transform 0.3s ease-out;
-    /* MUDANÇA: Removido o overflow: hidden para que a imagem não seja cortada de forma indesejada */
+    transition: all 0.2s ease-in-out    , opacity 0.6s ease-out, transform 0.3s ease-out;
 }
 
-.content-section:hover {
-    border-color: var(--glass-border-hover);
-    box-shadow: var(--glass-shadow-hover);
-    transform: translateY(-5px);
+.content-section p {
+    line-height: 1.9;
+    color: var(--text-paragraph);
+    font-size: clamp(1.1rem, 1rem + 0.6vw, 1.4rem); /* Aumentado */
+    margin-bottom: 12px;
 }
+
 
 .content-section.visible {
     opacity: 1;
@@ -226,8 +242,7 @@ body {
     display: block;
     /* Garante que a imagem preencha o círculo sem distorcer */
     object-fit: cover; 
-    /* MUDANÇA: Faz a imagem ser um círculo perfeito */
-    border-radius: 50%; 
+    border-radius: 20px; 
 }
 
 .section-text {

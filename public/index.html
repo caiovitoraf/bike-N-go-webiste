@@ -8,73 +8,123 @@
 </head>
 <body>
 
-    <header class="header">
-        <div class="header-logo">
-            <a href="index.html">
-                <img src="./img/mainlogotrans2.svg" alt="Logo Bike N' Go" class="logo-img">
-            </a>
+<header class="header">
+    <div class="header-logo">
+        <a href="index.html">
+            <img src="./img/mainlogotrans2.svg" alt="Logo Bike N' Go" class="logo-img">
+        </a>
+    </div>
+    <nav class="header-nav">
+        <a href="vendas.html" class="nav-icon">
+            <img src="./img/bolsa.svg" alt="Ícone Vendas">
+            <span class="visually-hidden">Vendas</span>
+        </a>
+        <a href="login.html" class="nav-icon">
+            <img src="./img/login.svg" alt="Ícone Login">
+            <span class="visually-hidden">Login</span>
+        </a>
+        <a href="faq.html" class="nav-icon">
+            <img src="./img/question.svg" alt="Ícone FAQ">
+            <span class="visually-hidden">Perguntas Frequentes</span>
+        </a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <section class="hero-section">
+        <div class="image-wrapper">
+            <img src="./img/bikeicon.svg" alt="Logo central Bike N' Go" class="hero-image">
         </div>
-        <nav class="header-nav">
-            <a href="vendas.html" class="nav-icon">
-                <img src="./img/bolsa.svg" alt="Ícone Vendas">
-                <span class="visually-hidden">Vendas</span>
-            </a>
-            <a href="login.html" class="nav-icon">
-                <img src="./img/login.svg" alt="Ícone Login">
-                <span class="visually-hidden">Login</span>
-            </a>
-            <a href="faq.html" class="nav-icon">
-                <img src="./img/question.svg" alt="Ícone FAQ">
-                <span class="visually-hidden">Perguntas Frequentes</span>
-            </a>
-        </nav>
-    </header>
+    </section>
 
-    <main class="main-content">
-        <section class="hero-section">
-            <div class="image-wrapper">
-                <img src="./img/bikeicon.svg" alt="Placeholder Imagem Central" class="hero-image">
-            </div>
-            
-
-        <section id="quem-somos" class="content-section">
-            <div class="section-image">
-                <img src="./img/peopleworking.png" alt="Equipe da Bike N' Go trabalhando em bicicletas.">
-            </div>
-            <div class="section-text">
-                <h2>Quem Somos?</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                </p>
-            </div>
-        </section>
-
-        <section id="solucao-transito" class="content-section">
-            <div class="section-image">
-                <img src="./img/manbiking.png" alt="Ciclista pedalando por uma cidade com trânsito ao fundo.">
-            </div>
-            <div class="section-text">
-                <h2>O trânsito caótico e nossa solução</h2>
-                <p>
-                    Aliquam erat volutpat. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                    Fusce euismod sem nec urna pharetra, a volutpat orci varius.
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Bike N' Go. Todos os direitos reservados.</p>
-            <div class="footer-social-links">
-                <a href="#" aria-label="Facebook"><img src="./img/facebook-icon.svg" alt="Facebook"></a>
-                <a href="#" aria-label="Instagram"><img src="./img/instagram-icon.svg" alt="Instagram"></a>
-                <a href="#" aria-label="Twitter"><img src="./img/twitter-icon.svg" alt="Twitter"></a>
-            </div>
+    <section id="quem-somos" class="content-section">
+        <div class="section-image">
+            <img src="./img/peopleworking.png" alt="Equipe da Bike N' Go trabalhando">
         </div>
-    </footer>
+        <div class="section-text">
+            <h2>Quem Somos</h2>
+            <p>
+                A <strong>Bike N' Go</strong> nasceu com o objetivo de transformar o trânsito do Rio de Janeiro por meio do ciclismo urbano acessível.
+                Nós acreditamos que a bicicleta é uma aliada poderosa da sustentabilidade e da mobilidade inteligente. Nossa empresa oferece
+                planos mensais de aluguel de bicicletas convencionais e elétricas, com uma ampla rede de estacionamentos e postos automatizados
+                espalhados pela cidade.
+            </p>
+            <p>
+                Trabalhamos também em parceria com o poder público para desenvolver infraestrutura cicloviária, promovendo uma cultura
+                de mobilidade limpa e eficiente. A empresa não visa apenas lucro: estamos engajados em transformar vidas por meio
+                de um novo jeito de se locomover.
+            </p>
+        </div>
+    </section>
 
-    <script src="./js/main.js"></script>
+    <section id="problema-transito" class="content-section">
+        <div class="section-image">
+            <img src="./img/trafficRJ.jpg" alt="Engarrafamento no Rio de Janeiro">
+        </div>
+        <div class="section-text">
+            <h2>O Trânsito no Rio</h2>
+            <p>
+                O trânsito da cidade do Rio de Janeiro é um dos mais congestionados da América Latina. Segundo dados do INRIX,
+                cariocas perdem em média mais de <strong>190 horas por ano</strong> presos em engarrafamentos. Além da perda de tempo, isso gera
+                estresse, poluição atmosférica e altos custos com transporte individual.
+            </p>
+            <p>
+                A dependência do automóvel é cultural e estrutural. Falta incentivo à mobilidade ativa e transporte alternativo.
+                O desafio é oferecer opções viáveis, seguras e integradas à rotina do cidadão comum.
+            </p>
+        </div>
+    </section>
+
+    <section id="solucao-bng" class="content-section">
+        <div class="section-image">
+            <img src="./img/manbiking.png" alt="Homem pedalando pela cidade">
+        </div>
+        <div class="section-text">
+            <h2>Nosso Modelo de Solução</h2>
+            <p>
+                Inspirados por cidades como Amsterdã, onde <strong>mais de 60% da população utiliza bicicleta diariamente</strong>,
+                criamos um sistema que combina aluguel de bicicletas acessível com uma malha de estacionamentos automatizados.
+                O usuário pode retirar uma bicicleta em um ponto e devolvê-la em outro, de forma ágil e segura.
+            </p>
+            <p>
+                Clientes Bike N' Go têm acesso a mais de 200 pontos de aluguel e estacionamento. Além disso, ciclistas que usam
+                bicicletas próprias também podem usufruir da infraestrutura por uma pequena taxa. Com planos mensais de R$ 30 (bike comum)
+                e R$ 50 (bike elétrica), é possível economizar em média R$ 400 por mês em comparação com transporte por carro ou aplicativo.
+            </p>
+        </div>
+    </section>
+
+    <section id="impacto-social" class="content-section">
+        <div class="section-image">
+            <img src="./img/pinkbikelane.png" alt="Ciclovia construída com apoio da Bike N' Go">
+        </div>
+        <div class="section-text">
+            <h2>Impacto Urbano e Social</h2>
+            <p>
+                Em parceria com a prefeitura do Rio de Janeiro, a Bike N' Go investe na construção de ciclovias públicas, sem fins lucrativos.
+                Inspirados também pela transformação urbana de cidades como Bogotá e Copenhague, defendemos o conceito de cidades para pessoas,
+                onde o espaço urbano seja pensado para o bem-estar coletivo.
+            </p>
+            <p>
+                Até 2025, nosso objetivo é contribuir com a implementação de mais de <strong>80 km de ciclovias</strong> em áreas com baixo acesso
+                ao transporte público. O investimento em mobilidade ativa reduz doenças respiratórias, promove atividade física e integra
+                diferentes classes sociais no direito à cidade.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2025 Bike N' Go. Todos os direitos reservados.</p>
+        <div class="footer-social-links">
+            <a href="#"><img src="./img/facebook-icon.svg" alt="Facebook"></a>
+            <a href="#"><img src="./img/instagram-icon.svg" alt="Instagram"></a>
+            <a href="#"><img src="./img/twitter-icon.svg" alt="Twitter"></a>
+        </div>
+    </div>
+</footer>
+
+<script src="./js/main.js"></script>
 </body>
 </html>
