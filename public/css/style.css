@@ -1,18 +1,28 @@
 /* --- Variáveis Globais (Custom Properties) --- */
+/* --- Variáveis Globais (Custom Properties) --- */
 :root {
-    --primary-color: #eb4b98;
-    --primary-color-hover: #fc9dcb;
+    /* TEMA ESCURO (PADRÃO) */
+    --gradient-bottom: #02394A;
+    --gradient-top: #00212A;
     --text-light: #f0f0f0;
     --text-paragraph: #e0e0e0;
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-border-hover: rgba(255, 255, 255, 0.8);
-    --glass-blur: 8px;
-    --glass-radius: 16px;
+    --primary-color: #eb4b98;
+    --primary-color-hover: #fc9dcb;
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --glass-shadow-hover: 0 8px 40px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.5);
-    --gradient-top: #00212A;
-    --gradient-bottom: #02394A;
+}
+/* TEMA CLARO */
+[data-theme="light"] {
+    --gradient-top: #f8f9fa;
+    --gradient-bottom: #e9ecef;
+    --text-light: #212529; /* Texto principal escuro */
+    --text-paragraph: #495057; /* Texto de parágrafo escuro */
+    --glass-bg: rgba(255, 255, 255, 0.4); /* Vidro mais claro e opaco */
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --primary-color: #d63384; /* Um rosa um pouco mais forte para contraste */
+    --primary-color-hover: #e74c9f;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Sombra mais suave */
 }
 
 @font-face {
@@ -47,10 +57,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(to bottom, var(--gradient-top), var(--gradient-bottom));
+    background: linear-gradient(to bottom, var(--gradient-bottom), var(--gradient-top));
     background-attachment: fixed;
     padding-top: 80px; /* Espaço para o header fixo */
-    transition: padding-top 0.3s ease;
+    transition: padding-top 0.3s ease, background-color 0.4s ease, color 0.4s ease;
+    
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,7 +75,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 15px 40px;
+    padding: 20px 40px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -100,8 +111,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -112,12 +123,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-icon img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     display: block;
-    filter: brightness(0) invert(1);
     z-index: 1;
-    position: relative;
+    position: center;
     transition: width 0.3s ease, height 0.3s ease;
 }
 
@@ -172,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-image {
     width: 60%;
-    max-width: 400px; /* Limite máximo para a logo */
+    max-width: 900px; /* Limite máximo para a logo */
     height: auto;
     display: block;
     margin: 0 auto 60px;
@@ -384,7 +394,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .login-logo {
-    width: 150px;
+    width: 350px;
     height: auto;
     margin-bottom: 2rem;
 }
