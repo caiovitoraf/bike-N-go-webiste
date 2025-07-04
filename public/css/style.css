@@ -1,28 +1,30 @@
 /* --- Variáveis Globais (Custom Properties) --- */
 /* --- Variáveis Globais (Custom Properties) --- */
+/* --- Variáveis Globais (Custom Properties) --- */
 :root {
-    /* TEMA ESCURO (PADRÃO) */
-    --gradient-bottom: #02394A;
-    --gradient-top: #00212A;
+    /* TEMA ESCURO (NEUTRO) */
+    --gradient-top: #060707;         /* Cinza chumbo quase preto */
+    --gradient-bottom: #02394A;      /* Cinza chumbo um pouco mais claro */
     --text-light: #f0f0f0;
     --text-paragraph: #e0e0e0;
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
     --primary-color: #eb4b98;
     --primary-color-hover: #fc9dcb;
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
-/* TEMA CLARO */
+
+/* TEMA CLARO (NEUTRO) */
 [data-theme="light"] {
-    --gradient-top: #f8f9fa;
-    --gradient-bottom: #e9ecef;
-    --text-light: #212529; /* Texto principal escuro */
-    --text-paragraph: #495057; /* Texto de parágrafo escuro */
-    --glass-bg: rgba(255, 255, 255, 0.4); /* Vidro mais claro e opaco */
+    --gradient-top: #f7f7f7;          /* Um branco suave "linho" */
+    --gradient-bottom: #fac8e1;       /* Um cinza muito claro e quente */
+    --text-light: #212529; 
+    --text-paragraph: #495057; 
+    --glass-bg: rgba(255, 255, 255, 0.5); 
     --glass-border: rgba(0, 0, 0, 0.1);
-    --primary-color: #d63384; /* Um rosa um pouco mais forte para contraste */
+    --primary-color: #d63384; 
     --primary-color-hover: #e74c9f;
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); 
 }
 
 @font-face {
@@ -107,36 +109,75 @@ h1, h2, h3, h4, h5, h6 {
     transition: gap 0.3s ease;
 }
 
+/* --- Estilos Otimizados para Nav Icons (Sem Fundo) --- */
+
 .nav-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px; /* Define uma área de clique confortável ao redor do ícone */
+    
+    /* Removemos o fundo e a borda do círculo */
+    background-color: transparent;
+    border: none;
+    border-radius: 8px; /* Mantemos um raio suave para o feedback de foco do teclado */
+    
     transition: all 0.3s ease;
     text-decoration: none;
     position: relative;
-    overflow: hidden;
+    color: var(--text-light); /* Controla a cor do ícone SVG */
 }
 
 .nav-icon img {
-    width: 30px;
-    height: 30px;
+    /* Ícones maiores */
+    width: 32px;
+    height: 32px;
     display: block;
-    z-index: 1;
-    position: center;
-    transition: width 0.3s ease, height 0.3s ease;
+    transition: all 0.3s ease;
+    /* Sombra sutil para ajudar na legibilidade */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
 }
 
-.nav-icon:hover, .nav-icon:focus {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    outline: none;
+
+/* --- Novo Efeito de Hover --- */
+
+.nav-icon:hover, 
+.nav-icon:focus {
+    /* Resetamos os estilos antigos de hover */
+    transform: none;
+    box-shadow: none;
+    
+    /* Em vez de mudar o fundo do círculo, mudamos a cor do próprio ícone */
+    color: var(--primary-color);
+    
+    /* Adicionamos um fundo muito sutil para indicar a área de clique */
+    background-color: rgba(255, 255, 255, 0.08); 
+}
+
+/* O efeito de crescimento e brilho agora é aplicado diretamente na imagem */
+.nav-icon:hover img, 
+.nav-icon:focus img {
+    transform: scale(1.15); /* Ícone cresce */
+    filter: drop-shadow(0 0 8px var(--primary-color)); /* Ícone brilha com a cor primária */
+}
+
+
+/* --- Adaptação para o Tema Claro --- */
+
+[data-theme="light"] .nav-icon {
+    color: var(--text-light); /* Herda a cor escura do tema claro */
+}
+
+[data-theme="light"] .nav-icon:hover,
+[data-theme="light"] .nav-icon:focus {
+    color: var(--primary-color); /* No hover, o ícone fica rosa */
+    background-color: rgba(0, 0, 0, 0.05); /* Fundo sutil para o tema claro */
+}
+
+/* O brilho no tema claro também usará a cor primária */
+[data-theme="light"] .nav-icon:hover img,
+[data-theme="light"] .nav-icon:focus img {
+    filter: drop-shadow(0 0 8px var(--primary-color));
 }
 
 /* --- Estilos do Conteúdo Principal (Main) --- */
@@ -633,7 +674,7 @@ h1, h2, h3, h4, h5, h6 {
 .plan-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: var(--glass-radius);
+    border-radius: 20px;
     padding: 30px 25px;
     width: 100%;
     /* Largura calculada para 4 itens com gap */

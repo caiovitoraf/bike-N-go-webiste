@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const themeIcon = themeSwitcher.querySelector('img');
     const sunIconSrc = './img/sun.svg';
-    const moonIconSrc = './img/moon.svg';
+    const moonIconSrc = './img/sun.svg';
 
     // Função para aplicar o tema e atualizar o ícone
     const applyTheme = (theme) => {
