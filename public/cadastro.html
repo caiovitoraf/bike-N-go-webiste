@@ -77,25 +77,38 @@
 
 <script>
     const form = document.getElementById('register-form');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirm-password');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
     const passwordError = document.getElementById('password-error');
 
     form.addEventListener('submit', (event) => {
-        // Remove a classe de erro para resetar a validação
-        confirmPassword.classList.remove('error');
+        // Previne o envio padrão do formulário para controlarmos tudo com JS
+        event.preventDefault(); 
+        
+        // Reseta a interface de erro a cada tentativa
+        confirmPasswordInput.classList.remove('error');
         passwordError.style.display = 'none';
 
-        if (password.value !== confirmPassword.value) {
-            // Previne o envio do formulário
-            event.preventDefault(); 
-            
+        if (passwordInput.value !== confirmPasswordInput.value) {
             // Mostra a mensagem de erro e adiciona a classe de erro
             passwordError.style.display = 'block';
-            confirmPassword.classList.add('error');
-            confirmPassword.focus();
+            confirmPasswordInput.classList.add('error');
+            confirmPasswordInput.focus();
+        } else {
+            // Se as senhas coincidem, salva os dados na sessionStorage
+            const userEmail = emailInput.value;
+            const userPassword = passwordInput.value;
+
+            sessionStorage.setItem('userEmail', userEmail);
+            sessionStorage.setItem('userPassword', userPassword);
+
+            // Informa o usuário e redireciona para a página de login
+            alert('Cadastro realizado com sucesso! Você será redirecionado para a página de login.');
+            window.location.href = 'login.html';
         }
     });
+</script>
 </script>
 
 </body>
