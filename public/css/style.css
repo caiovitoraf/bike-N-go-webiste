@@ -864,3 +864,119 @@ h1, h2, h3, h4, h5, h6 {
         gap: 1.5rem;
     }
 }
+
+/* --- Estilos da Página de Cadastro --- */
+
+.register-container {
+    width: 100%;
+    max-width: 500px; /* Um pouco mais largo que o login para acomodar mais campos */
+    margin: 2rem auto;
+    padding: 40px;
+    background-color: var(--glass-bg);
+    border-radius: var(--glass-radius);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.register-container .form-subtitle {
+    color: var(--text-paragraph);
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Reutiliza o estilo do container de login para o h2 */
+.register-container h2 {
+    color: var(--text-light);
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Estilo para a classe de erro na validação de senha */
+.input-group input.error {
+    border-color: #e74c3c; /* Vermelho para erro */
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: none; /* Começa escondido */
+}
+
+/* Estilo para o grupo de "Termos de Serviço" */
+.terms-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.terms-group label {
+    color: var(--text-paragraph);
+    line-height: 1.5;
+}
+
+.terms-group a {
+    color: var(--primary-color-hover);
+    text-decoration: none;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Reutilizando e adaptando o estilo do checkbox */
+.terms-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    top: 3px; /* Alinha melhor com o texto */
+    flex-shrink: 0; /* Previne que o checkbox encolha */
+    transition: background-color 0.3s ease;
+}
+
+.terms-group input[type="checkbox"]:checked::before {
+    content: '✔';
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.terms-group input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+}
+
+/* Link para redirecionar para o login */
+.login-redirect-link {
+    margin-top: 2rem;
+    color: var(--text-paragraph);
+    font-size: 0.9rem;
+}
+
+.login-redirect-link a {
+    color: var(--primary-color-hover);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-redirect-link a:hover {
+    text-decoration: underline;
+}

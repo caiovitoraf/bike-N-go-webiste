@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bike N' Go - Crie sua Conta</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+<header class="header">
+    <div class="header-logo">
+        <a href="index.html">
+            <img src="./img/mainlogotrans2.svg" alt="Logo Bike N' Go" class="logo-img" />
+        </a>
+    </div>
+    <nav class="header-nav">
+        <a href="planos.html" class="nav-icon"><img src="./img/bolsa.svg" alt="Ícone Planos" /></a>
+        <a href="login.html" class="nav-icon"><img src="./img/login.svg" alt="Ícone Login" /></a>
+        <a href="faq.html" class="nav-icon"><img src="./img/question.svg" alt="Ícone FAQ" /></a>
+    </nav>
+</header>
+
+<main class="main-content">
+
+    <div class="register-container">
+        <h2>Crie sua Conta</h2>
+        <p class="form-subtitle">Rápido e fácil. Comece a pedalar hoje mesmo!</p>
+
+        <form id="register-form" action="#" method="POST">
+            <div class="input-group">
+                <label for="fullname">Nome Completo</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Seu nome completo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" required minlength="8">
+            </div>
+
+            <div class="input-group">
+                <label for="confirm-password">Confirmar Senha</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita sua senha" required>
+                <div id="password-error" class="error-message">As senhas não coincidem.</div>
+            </div>
+
+            <div class="terms-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Eu li e aceito os <a href="#">Termos de Serviço</a> e a <a href="#">Política de Privacidade</a>.</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Criar Conta</button>
+        </form>
+
+        <div class="login-redirect-link">
+            <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2025 Bike N' Go. Todos os direitos reservados.</p>
+        <div class="footer-social-links">
+            <a href="#"><img src="./img/facebook-icon.svg" alt="Facebook" /></a>
+            <a href="#"><img src="./img/instagram-icon.svg" alt="Instagram" /></a>
+            <a href="#"><img src="./img/twitter-icon.svg" alt="Twitter" /></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const form = document.getElementById('register-form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const passwordError = document.getElementById('password-error');
+
+    form.addEventListener('submit', (event) => {
+        // Remove a classe de erro para resetar a validação
+        confirmPassword.classList.remove('error');
+        passwordError.style.display = 'none';
+
+        if (password.value !== confirmPassword.value) {
+            // Previne o envio do formulário
+            event.preventDefault(); 
+            
+            // Mostra a mensagem de erro e adiciona a classe de erro
+            passwordError.style.display = 'block';
+            confirmPassword.classList.add('error');
+            confirmPassword.focus();
+        }
+    });
+</script>
+
+</body>
+</html>
