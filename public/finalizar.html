@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bike N' Go - Finalizar Contratação</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+<header class="header">
+    <div class="header-logo">
+        <a href="index.html">
+            <img src="./img/mainlogotrans2.svg" alt="Logo Bike N' Go" class="logo-img" />
+        </a>
+    </div>
+    <nav class="header-nav">
+        <a href="#" id="theme-switcher" class="nav-icon" title="Mudar Tema"><img src="./img/sun.svg" alt="Mudar Tema" /></a>
+        <a href="vendas.html" class="nav-icon"><img src="./img/bolsa.svg" alt="Ícone vendas.html" /></a>
+        <a href="login.html" class="nav-icon"><img src="./img/login.svg" alt="Ícone Login" /></a>
+        <a href="faq.html" class="nav-icon"><img src="./img/question.svg" alt="Ícone FAQ" /></a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <div id="checkout-container" class="checkout-container">
+        <h2 id="checkout-title">Carregando seu plano...</h2>
+        <p class="subtitle">Confira os detalhes abaixo para finalizar.</p>
+
+        <div class="order-summary">
+            <div class="order-line-item">
+                <span id="plan-name"></span>
+                <span id="plan-price" class="price-highlight"></span>
+            </div>
+            <hr class="summary-divider">
+            <div class="order-line-item total">
+                <span>TOTAL</span>
+                <span id="total-price" class="price-highlight"></span>
+            </div>
+        </div>
+
+        <div class="card-details">
+            <h3>Benefícios Inclusos</h3>
+            <ul id="plan-features">
+                </ul>
+        </div>
+
+        <a href="index.html" id="confirm-button" class="btn btn-primary">Confirmar Contratação</a>
+    </div>
+
+    <div id="login-prompt" class="checkout-container" style="display: none;">
+        <h2>Acesso Necessário</h2>
+        <p class="subtitle">Você precisa estar logado para acessar esta página.</p>
+        <a href="login.html" class="btn btn-primary">Fazer Login</a>
+    </div>
+</main>
+
+<footer class="footer">
+    </footer>
+
+<script src="./js/theme-switcher.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Verifica se o usuário está logado
+    if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+        document.getElementById('checkout-container').style.display = 'none';
+        document.getElementById('login-prompt').style.display = 'flex';
+        return; // Para a execução do script se não estiver logado
+    }
+
+    // Objeto com os detalhes de todos os planos
+    const plansData = {
+        avulso_simples: {
+            title: "Confirmar Passeio Avulso",
+            name: "Passeio Avulso - Simple Bike",
+            price: "R$ 5,00",
+            features: ["1 Viagem de até 60 minutos", "Acesso às bicicletas padrão", "Ideal para passeios rápidos e sem compromisso"],
+            buttonText: "Confirmar Passeio"
+        },
+        avulso_bolt: {
+            title: "Confirmar Passeio Bolt",
+            name: "Passeio Avulso - Bolt Bike",
+            price: "R$ 7,00",
+            features: ["1 Viagem de até 60 minutos", "Acesso às bicicletas elétricas", "Suba ladeiras e vá mais longe sem esforço"],
+            buttonText: "Confirmar Passeio"
+        },
+        mensal_simples: {
+            title: "Resumo da sua Assinatura",
+            name: "Plano Mensal - Bike N' Go",
+            price: "R$ 30,00/mês",
+            features: ["Viagens ilimitadas de até 60 minutos", "Acesso a todas as bicicletas padrão", "Estacionamento gratuito nos bolsões BNG", "Custo-benefício para o uso diário"],
+            buttonText: "Confirmar Assinatura"
+        },
+        mensal_bolt: {
+            title: "Resumo da sua Assinatura",
+            name: "Plano Mensal - Bike Bolt",
+            price: "R$ 50,00/mês",
+            features: ["Todos os benefícios do plano mensal", "Acesso ilimitado às potentes Bikes Elétricas", "A melhor experiência para explorar a cidade sem limites"],
+            buttonText: "Confirmar Assinatura"
+        }
+    };
+
+    // Pega o parâmetro 'plan' da URL
+    const params = new URLSearchParams(window.location.search);
+    const planId = params.get('plan');
+
+    // Seleciona os dados do plano correto ou redireciona se o plano for inválido
+    const selectedPlan = plansData[planId];
+    if (!selectedPlan) {
+        alert("Plano inválido! Redirecionando para a página de planos.");
+        window.location.href = 'vendas.html';
+        return;
+    }
+
+    // Atualiza a página com os dados do plano selecionado
+    document.getElementById('checkout-title').textContent = selectedPlan.title;
+    document.getElementById('plan-name').textContent = selectedPlan.name;
+    document.getElementById('plan-price').textContent = selectedPlan.price;
+    document.getElementById('total-price').textContent = selectedPlan.price;
+    document.getElementById('confirm-button').textContent = selectedPlan.buttonText;
+
+    const featuresList = document.getElementById('plan-features');
+    featuresList.innerHTML = ''; // Limpa a lista antes de adicionar
+    selectedPlan.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="check-icon">✓</span> ${feature}`;
+        featuresList.appendChild(li);
+    });
+});
+</script>
+
+</body>
+</html>

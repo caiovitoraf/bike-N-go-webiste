@@ -16,7 +16,7 @@
     </div>
     <nav class="header-nav">
         <a href="#" id="theme-switcher" class="nav-icon" title="Mudar Tema"><img src="./img/sun.svg" alt="Mudar Tema" /></a>
-        <a href="planos.html" class="nav-icon"><img src="./img/bolsa.svg" alt="Ícone Planos" /></a>
+        <a href="vendas.html" class="nav-icon"><img src="./img/bolsa.svg" alt="Ícone Planos" /></a>
         <a href="login.html" class="nav-icon"><img src="./img/login.svg" alt="Ícone Login" /></a>
         <a href="faq.html" class="nav-icon"><img src="./img/question.svg" alt="Ícone FAQ" /></a>
     </nav>
@@ -30,62 +30,54 @@
         <div class="plan-card">
             <h2>Passeio Avulso</h2>
             <p class="plan-tagline">Uma viagem com a bike padrão</p>
-            <div class="plan-price">
-                R$ 5
-            </div>
+            <div class="plan-price">R$ 5</div>
             <ul class="plan-features">
                 <li><span class="check-icon">✓</span> 1 Viagem de até 60 min</li>
                 <li><span class="check-icon">✓</span> Acesso às bicicletas padrão</li>
                 <li><span class="check-icon">✓</span> Ideal para um passeio rápido</li>
                 <li><span class="check-icon">✓</span> Sem compromisso</li>
             </ul>
-            <button class="btn btn-secondary">Pedalar Agora</button>
+            <a href="#" data-plan="avulso_simples" class="btn btn-secondary plan-button">Pedalar Agora</a>
         </div>
 
         <div class="plan-card">
             <h2>Passeio Bolt</h2>
             <p class="plan-tagline">Uma viagem com impulso elétrico</p>
-            <div class="plan-price">
-                R$ 7
-            </div>
+            <div class="plan-price">R$ 7</div>
             <ul class="plan-features">
                 <li><span class="check-icon">✓</span> 1 Viagem de até 60 min</li>
                 <li><span class="check-icon">✓</span> Acesso às bicicletas elétricas</li>
                 <li><span class="check-icon">✓</span> Suba ladeiras sem esforço</li>
                 <li><span class="check-icon">✓</span> Sem compromisso</li>
             </ul>
-            <button class="btn btn-secondary">Pedalar Agora</button>
+            <a href="#" data-plan="avulso_bolt" class="btn btn-secondary plan-button">Pedalar Agora</a>
         </div>
         
         <div class="plan-card">
             <h2>Plano Mensal</h2>
             <p class="plan-tagline">Liberdade para o dia a dia</p>
-            <div class="plan-price">
-                R$ 30<span>/mês</span>
-            </div>
+            <div class="plan-price">R$ 30<span>/mês</span></div>
             <ul class="plan-features">
                 <li><span class="check-icon">✓</span> Viagens ilimitadas de até 60 min</li>
                 <li><span class="check-icon">✓</span> Acesso às bicicletas padrão</li>
                 <li><span class="check-icon">✓</span> Estacionamento gratuito</li>
                 <li><span class="check-icon">✓</span> Custo-benefício máximo</li>
             </ul>
-            <button class="btn btn-secondary">Escolher Plano</button>
+            <a href="#" data-plan="mensal_simples" class="btn btn-secondary plan-button">Escolher Plano</a>
         </div>
 
         <div class="plan-card popular">
             <div class="popular-badge">MAIS POPULAR</div>
             <h2>Plano Bolt</h2>
             <p class="plan-tagline">Potência e liberdade total</p>
-            <div class="plan-price">
-                R$ 50<span>/mês</span>
-            </div>
+            <div class="plan-price">R$ 50<span>/mês</span></div>
             <ul class="plan-features">
                 <li><span class="check-icon">✓</span> <strong>Todos os benefícios do plano mensal</strong></li>
                 <li><span class="check-icon">✓</span> Acesso total às <strong>Bikes Elétricas</strong></li>
                 <li><span class="check-icon">✓</span> Perfeito para longas distâncias</li>
                 <li><span class="check-icon">✓</span> A melhor experiência BNG</li>
             </ul>
-            <button class="btn btn-primary">Escolher Plano</button>
+            <a href="#" data-plan="mensal_bolt" class="btn btn-primary plan-button">Escolher Plano</a>
         </div>
     </div>
 </main>
@@ -100,6 +92,29 @@
         </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const planButtons = document.querySelectorAll('.plan-button');
+
+        planButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Impede a navegação padrão do link
+
+                // Verifica se o usuário está logado
+                if (sessionStorage.getItem('isLoggedIn') === 'true') {
+                    const planId = button.getAttribute('data-plan');
+                    // Se estiver logado, redireciona para a página de finalização com o plano na URL
+                    window.location.href = `finalizar.html?plan=${planId}`;
+                } else {
+                    // Se não estiver logado, avisa e redireciona para o login
+                    alert('Você precisa fazer login para contratar um plano!');
+                    window.location.href = 'login.html';
+                }
+            });
+        });
+    });
+</script>
 <script src="./js/theme-switcher.js"></script>
 
 </body>
