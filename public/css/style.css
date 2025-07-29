@@ -1156,3 +1156,186 @@ h1, h2, h3, h4, h5, h6 {
     gap: 10px;
     color: var(--text-paragraph);
 }
+
+/* --- ESTILOS PARA A NOVA SEÇÃO DE HERÓI --- */
+.hero-section-new {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 60px 0;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    color: var(--text-light);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-paragraph);
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Reutilizando a classe .btn que você já deve ter para login/cadastro */
+.btn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+    box-shadow: 0 6px 20px rgba(235, 75, 152, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.hero-image-container {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+}
+
+.hero-image-new {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* --- ESTILOS PARA A SEÇÃO "COMO FUNCIONA" --- */
+.how-it-works-section {
+    text-align: center;
+    padding: 80px 0;
+    width: 100%;
+}
+
+.how-it-works-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--text-light);
+    margin-bottom: 4rem;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background-color: var(--glass-bg);
+    padding: 30px;
+    border-radius: 16px;
+    flex-basis: 300px;
+    flex-grow: 1;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glass-shadow);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--text-paragraph);
+    font-size: 1rem;
+}
+
+
+/* --- ESTILOS PARA A SEÇÃO DE TEASER DE PLANOS --- */
+.plans-teaser-section {
+    text-align: center;
+    padding: 80px 0;
+    width: 100%;
+}
+
+.plans-teaser-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.plans-teaser-section .subtitle {
+    color: var(--text-paragraph);
+    max-width: 600px;
+    margin: 0 auto 4rem;
+}
+
+
+/* --- AJUSTES DE RESPONSIVIDADE PARA NOVAS SEÇÕES --- */
+@media (max-width: 900px) {
+    .hero-section-new {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image-container {
+        order: -1; /* Imagem vai para cima no mobile */
+        margin-bottom: 2rem;
+    }
+}
